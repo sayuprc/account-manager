@@ -3,6 +3,9 @@
 @section('title', 'ユーザー一覧')
 
 @section('content')
+    @error('message')
+        <span>{{ $message }}</span>
+    @enderror
     <table>
         <thead>
             <tr>
@@ -25,6 +28,7 @@
                     <td>{{ $user->is_admin ? 'はい' : 'いいえ' }}</td>
                     <td>{{ $user->created_at->format('Y/m/d H:i:s') }}</td>
                     <td>{{ $user->updated_at->format('Y/m/d H:i:s') }}</td>
+                    <td><a href="/admin/users/{{ $user->user_id }}/edit">編集</a></td>
                 </tr>
             @endforeach
         </tbody>
