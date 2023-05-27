@@ -3,6 +3,11 @@
 @section('title', 'ユーザー一覧')
 
 @section('content')
+    @if (session('success'))
+        <div>
+            {{ session('success') }}
+        </div>
+    @endif
     @error('message')
         <span>{{ $message }}</span>
     @enderror
@@ -29,6 +34,14 @@
                     <td>{{ $user->created_at->format('Y/m/d H:i:s') }}</td>
                     <td>{{ $user->updated_at->format('Y/m/d H:i:s') }}</td>
                     <td><a href="/admin/users/{{ $user->user_id }}/edit">編集</a></td>
+                    @if ($user->user_id !== Auth::user()->user_id)
+                        <td>
+                            <form action="/admin/users/{{ $user->user_id }}/delete" method="POST">
+                                @csrf
+                                <input type="submit" value="削除">
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>
