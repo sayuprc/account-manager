@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\User\DeleteController;
 use App\Http\Controllers\Admin\User\EditController;
 use App\Http\Controllers\Admin\User\IndexController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,8 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth', 'activity'])->group(function () {
+    Route::post('/logout', [LogoutController::class, 'handle']);
+
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin/users', [IndexController::class, 'index']);
 

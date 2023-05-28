@@ -9,7 +9,20 @@
 </head>
 
 <body>
-    @yield('content')
+    <header>
+        @guest
+            <a href="/login">ログイン</a>
+            <a href="/register">登録</a>
+        @else
+            <form action="/logout" method="POST">
+                @csrf
+                <input type="submit" value="ログアウト">
+            </form>
+        @endguest
+    </header>
+    <section>
+        @yield('content')
+    </section>
 </body>
 
 </html>
