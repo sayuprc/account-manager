@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\UsageCategory\IndexController as UsageCategoryIndexController;
 use App\Http\Controllers\Admin\User\DeleteController;
 use App\Http\Controllers\Admin\User\EditController;
 use App\Http\Controllers\Admin\User\IndexController;
@@ -28,5 +29,7 @@ Route::middleware(['auth', 'activity'])->group(function () {
         Route::post('/admin/users/{id}/edit', [EditController::class, 'store'])->whereUuid('id');
 
         Route::post('/admin/users/{id}/delete', [DeleteController::class, 'delete'])->whereUuid('id');
+
+        Route::get('/admin/usage-categories', [UsageCategoryIndexController::class, 'index']);
     });
 });
