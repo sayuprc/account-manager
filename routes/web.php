@@ -31,5 +31,8 @@ Route::middleware(['auth', 'activity'])->group(function () {
         Route::post('/admin/users/{id}/delete', [DeleteController::class, 'delete'])->whereUuid('id');
 
         Route::get('/admin/usage-categories', [UsageCategoryIndexController::class, 'index']);
+
+        Route::get('/admin/usage-categories/create', []);
+        Route::post('/admin/usage-categories', []);
     });
 });
