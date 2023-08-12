@@ -30,7 +30,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Basic\\": "packages/Basic/"
+            "Basic\\": "packages/Basic/",
+            "User\\": "packages/User/"
         }
     },
     "autoload-dev": {
