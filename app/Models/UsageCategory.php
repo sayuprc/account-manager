@@ -31,4 +31,14 @@ class UsageCategory extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'usage_category_id',
+        'usage_category_name',
+    ];
 }

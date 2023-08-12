@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\UsageCategory\CreateController as UsageCategoryCreateController;
 use App\Http\Controllers\Admin\UsageCategory\IndexController as UsageCategoryIndexController;
 use App\Http\Controllers\Admin\User\DeleteController;
 use App\Http\Controllers\Admin\User\EditController;
@@ -32,7 +33,7 @@ Route::middleware(['auth', 'activity'])->group(function () {
 
         Route::get('/admin/usage-categories', [UsageCategoryIndexController::class, 'index']);
 
-        Route::get('/admin/usage-categories/create', []);
-        Route::post('/admin/usage-categories', []);
+        Route::get('/admin/usage-categories/create', [UsageCategoryCreateController::class, 'create']);
+        Route::post('/admin/usage-categories', [UsageCategoryCreateController::class, 'store']);
     });
 });
