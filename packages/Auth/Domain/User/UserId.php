@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace User\Domain;
+namespace Auth\Domain\User;
 
 use Basic\Domain\ValueObjects\StringValueObject;
 use InvalidArgumentException;

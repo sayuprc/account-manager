@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\User\Domain;
+namespace Tests\Unit\Auth\Domain\User;
 
+use Auth\Domain\User\Email;
+use Auth\Domain\User\FirstName;
+use Auth\Domain\User\HashedPassword;
+use Auth\Domain\User\IsActive;
+use Auth\Domain\User\IsAdmin;
+use Auth\Domain\User\LastName;
+use Auth\Domain\User\User;
+use Auth\Domain\User\UserId;
 use PHPUnit\Framework\TestCase;
-use User\Domain\Email;
-use User\Domain\FirstName;
-use User\Domain\HashedPassword;
-use User\Domain\IsActive;
-use User\Domain\IsAdmin;
-use User\Domain\LastName;
-use User\Domain\User;
-use User\Domain\UserId;
 
 class UserTest extends TestCase
 {

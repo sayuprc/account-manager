@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace User\Domain;
+namespace Auth\Domain\User;
 
 use Basic\Domain\ValueObjects\StringValueObject;
 use LengthException;
 
-class FirstName extends StringValueObject
+class LastName extends StringValueObject
 {
     /**
      * @var int MIN_LENGTH
@@ -29,11 +29,11 @@ class FirstName extends StringValueObject
     public function __construct(string $value)
     {
         $trimmedValue = trim($value);
-        
+
         $length = mb_strlen($trimmedValue);
 
         if ($length < self::MIN_LENGTH || self::MAX_LENGTH < $length) {
-            throw new LengthException(sprintf('FirstName must be between %d and %d characters', self::MIN_LENGTH, self::MAX_LENGTH));
+            throw new LengthException(sprintf('LastName must be between %d and %d characters', self::MIN_LENGTH, self::MAX_LENGTH));
         }
 
         parent::__construct($trimmedValue);

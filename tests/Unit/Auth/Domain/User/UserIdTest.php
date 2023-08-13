@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\User\Domain;
+namespace Tests\Unit\Auth\Domain\User;
 
+use Auth\Domain\User\UserId;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use User\Domain\Email;
 
-class EmailTest extends TestCase
+class UserIdTest extends TestCase
 {
     /**
      * Testing for create instance from normal value
@@ -19,7 +19,7 @@ class EmailTest extends TestCase
      */
     public function testNormal(): void
     {
-        new Email('example@example.com');
+        new UserId(sprintf('%1$s-%2$s-%2$s-%2$s-%3$s', str_repeat('a', 8), str_repeat('b', 4), str_repeat('c', 13)));
     }
 
     /**
@@ -31,6 +31,6 @@ class EmailTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        new Email('xxxxxxx');
+        new UserId('');
     }
 }

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\User\Domain;
+namespace Tests\Unit\Auth\Domain\User;
 
+use Auth\Domain\User\FirstName;
 use LengthException;
 use PHPUnit\Framework\TestCase;
-use User\Domain\LastName;
 
-class LastNameTest extends TestCase
+class FirstNameTest extends TestCase
 {
     /**
      * Testing for create instance from normal value
@@ -19,7 +19,7 @@ class LastNameTest extends TestCase
      */
     public function testNormal(): void
     {
-        new LastName('last');
+        new FirstName('first');
     }
 
     /**
@@ -31,7 +31,7 @@ class LastNameTest extends TestCase
     {
         $this->expectException(LengthException::class);
 
-        new LastName('');
+        new FirstName('');
     }
 
     /**
@@ -43,6 +43,6 @@ class LastNameTest extends TestCase
     {
         $this->expectException(LengthException::class);
 
-        new LastName(str_repeat('x', 33));
+        new FirstName(str_repeat('x', 33));
     }
 }
