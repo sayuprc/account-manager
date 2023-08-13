@@ -5,19 +5,14 @@ declare(strict_types=1);
 namespace User\Domain;
 
 use Basic\Domain\ValueObjects\StringValueObject;
-use LengthException;
+use InvalidArgumentException;
 
 class UserId extends StringValueObject
 {
     /**
-     * @var int LENGTH
-     */
-    private const LENGTH = 36;
-
-    /**
      * @param string $value
      *
-     * @throws LengthException
+     * @throws InvalidArgumentException
      *
      * @return void
      */
@@ -25,8 +20,8 @@ class UserId extends StringValueObject
     {
         $trimmedValue = trim($value);
 
-        if (mb_strlen($trimmedValue) !== self::LENGTH) {
-            throw new LengthException(sprintf('UserId must be %d characters', self::LENGTH));
+        if (! preg_match('/[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}/', $trimmedValue)) {
+            throw new InvalidArgumentException('UserId format is incorrect');
         }
 
         parent::__construct($trimmedValue);
