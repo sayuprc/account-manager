@@ -113,7 +113,7 @@ class User
      *
      * @return bool
      */
-    public function IsActive(): bool
+    public function isActive(): bool
     {
         return $this->isActive->getValue() === true;
     }
@@ -123,7 +123,7 @@ class User
      *
      * @return bool
      */
-    public function IsAdmin(): bool
+    public function isAdmin(): bool
     {
         return $this->isAdmin->getValue() === true;
     }
